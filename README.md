@@ -11,6 +11,14 @@ Usage: .\/Lift \<floors\> \<height\> \<speed\> \<delay\>
    - \<height\>  - floor height in meters</br>
     - \<speed\> - lift speed in m/sec</br>
     - \<delay\> - door open/close period sec</br>
+    
+# Manage lift
+Enter 0 floor, Enter to exit</br>
+Call lift from entrance hall (press "e", Enter) or push button inside (press "i", Enter) lift:</br>
+Then enter</br> 
+- Push button number:</br>
+or</br>
+- Call lift from floor
 
 # Оригинальное задание:
 

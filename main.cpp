@@ -26,7 +26,8 @@ int main(int argc, char **argv)
         bool inside = false;
         char type;
 
-        std::cout << "Call lift from entrance hall (e) or push button inside (i) lift:";
+        std::cout << "Call lift from entrance hall (press 'e', Enter) or "
+                     "push button inside (press 'i', Enter) lift:";
         std::cin >> type;
         switch (type) {
         case 'i':

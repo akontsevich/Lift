@@ -5,10 +5,6 @@
 #include <mutex>
 #include <set>
 
-/// Lift event cycle period in msec
-#define PERIOD 250
-#define EPSILON 0.001
-
 typedef std::pair<uint, bool> Command;
 
 struct CommCompare {
@@ -58,6 +54,10 @@ private:
     void MoveDown();
     void OpenDoors();
     void Stop();
+
+    /// Lift event cycle period in msec
+    const uint period = 250;
+    const double epsilon = 0.001;
 
     void (Lift::*action)() = &Lift::Stop;
 

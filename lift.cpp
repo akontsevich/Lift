@@ -30,7 +30,7 @@ void Lift::Work()
         // Perform pending lift action
         (this->*action)();
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(PERIOD));
+        std::this_thread::sleep_for(std::chrono::milliseconds(period));
     }
 }
 
@@ -76,9 +76,9 @@ void Lift::Stop()
 void Lift::MoveUp()
 {
     double floor = (double)current_floor_ + speed_ * command_time_;
-    if(fabs(floor - current_command_.first) > EPSILON) {
-        command_time_ += PERIOD / 1000.0;
-        if(fabs(floor - (int)floor) <= EPSILON) {
+    if(fabs(floor - current_command_.first) > epsilon) {
+        command_time_ += period / 1000.0;
+        if(fabs(floor - (int)floor) <= epsilon) {
             std::cout << (int)floor << " floor" << std::endl;
             // Check intermediate stop
             // (commented to skip intermediate stop on moving up as on real lift)
@@ -100,9 +100,9 @@ void Lift::MoveUp()
 void Lift::MoveDown()
 {
     double floor = (double)current_floor_ - speed_ * command_time_;
-    if(fabs(floor - current_command_.first) > EPSILON) {
-        command_time_ += PERIOD / 1000.0;
-        if(fabs(floor - (int)floor) <= EPSILON) {
+    if(fabs(floor - current_command_.first) > epsilon) {
+        command_time_ += period / 1000.0;
+        if(fabs(floor - (int)floor) <= epsilon) {
             std::cout << (int)floor << " floor" << std::endl;
             // Check intermediate stop (gather all people on moving down)
             auto it = NeedToStop((int)floor);
@@ -122,11 +122,11 @@ void Lift::MoveDown()
 
 void Lift::OpenDoors()
 {
-    if(fabs(command_time_ - delay_) > EPSILON) {
+    if(fabs(command_time_ - delay_) > epsilon) {
         if(command_time_ == 0.0) {
             std::cout << "Doors openned" << std::endl;
         }
-        command_time_ += PERIOD / 1000.0;
+        command_time_ += period / 1000.0;
     } else {
         std::cout << "Doors closed" << std::endl;
         setState(LiftState::Stopped);
